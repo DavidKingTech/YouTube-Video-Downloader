@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+}
+
+.logo {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ff0000, #ff6b6b, #ff0000);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Hero Section */
+.hero {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 30px 0;
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2),
+                inset 0 0 20px rgba(255, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.hero-text {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Download Form */
+.download-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    position: relative;
+}
+
+.url-input {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #ff0000;
+    border-radius: 50px;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+.url-input:focus {
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+    border-color: #ff6b6b;
+}
+
+.url-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.download-btn {
+    background: linear-gradient(45deg, #ff0000, #ff6b6b);
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.download-btn:hover::before {
+    left: 100%;
+}
+
+/* Features Section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 60px 0;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+    border-color: #ff0000;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #ff0000;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.feature-text {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* How It Works */
+.how-it-works {
+    background: rgba(255, 0, 0, 0.1);
+    padding: 50px;
+    border-radius: 20px;
+    margin: 60px 0;
+    border: 2px solid rgba(255, 0, 0, 0.3);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(255, 0, 0, 0.2);
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.step-content {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px 20px 20px;
+    border-radius: 15px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    color: #ff0000;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.step-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.step-text {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 60px;
+    border-top: 2px solid rgba(255, 0, 0, 0.3);
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+/* Animations */
+@keyframes neonPulse {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.3),
+                   0 0 20px rgba(255, 0, 0, 0.2),
+                   0 0 30px rgba(255, 0, 0, 0.1);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.4),
+                   0 0 40px rgba(255, 0, 0, 0.3),
+                   0 0 60px rgba(255, 0, 0, 0.2);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero {
+        padding: 20px;
+    }
+    
+    .feature-card, .step-content {
+        padding: 20px;
+    }
+    
+    .how-it-works {
+        padding: 30px 20px;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 0, 0, 0.3);
+    border-top: 5px solid #ff0000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+   #progressContainer {
+      width: 100%;
+      background: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 15px;
+      display: none;
+    }
+    #progressBar {
+      height: 20px;
+      width: 0%;
+      background: limegreen;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+    }
