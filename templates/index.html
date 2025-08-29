@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YTport video Downloader</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1 class="logo">YTport ⚡</h1>
+      <p class="tagline">Download YouTube videos in epic quality</p>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h2 class="hero-title">DOWNLOAD ANY YOUTUBE VIDEO</h2>
+      <p class="hero-text">High-speed downloads for students and content creators. No limits, no watermarks.</p>
+
+      <form method="POST" class="download-form" id="downloadForm">
+        <div class="form-group">
+          <input type="url" name="url" class="url-input" placeholder="https://www.youtube.com/watch?v=..." required>
+        </div>
+        <button type="submit" class="download-btn">
+          <i class="fas fa-download"></i> DOWNLOAD NOW
+        </button>
+      </form>
+
+      <!-- Download status -->
+      <p id="downloadStatus" style="color: rgb(0, 128, 28); margin-top: 15px; display: none;">
+        Please wait while its Downloadeds...
+      </p>
+
+      {% if error %}
+      <p style="color: red; margin-top: 15px;">{{ error }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+        <h3 class="feature-title">Lightning Fast</h3>
+        <p class="feature-text">Blazing fast downloads optimized for devices.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3 class="feature-title">100% Secure</h3>
+        <p class="feature-text">No data tracking, no ads, just clean and safe downloads.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user"></i></div>
+        <h3 class="feature-title">User Friendly</h3>
+        <p class="feature-text">Perfect for downloading tutorials, walkthroughs, courses and content.</p>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-it-works">
+      <h2 class="section-title">HOW IT WORKS</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fas fa-link"></i></div>
+            <h3 class="step-title">Copy Link</h3>
+            <p class="step-text">Copy YouTube video URL from your browser</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fas fa-paste"></i></div>
+            <h3 class="step-title">Paste & Click</h3>
+            <p class="step-text">Paste the link and hit the download button</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fas fa-download"></i></div>
+            <h3 class="step-title">Download</h3>
+            <p class="step-text">Get your video in HD quality instantly</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="footer-text">© 2025 YTport Downloader Worldwide</p>
+    </div>
+  </div>
+
+  <!-- Script -->
+ <script>
+  const form = document.getElementById("downloadForm");
+  const statusMsg = document.getElementById("downloadStatus");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // stop normal form submit first
+    statusMsg.innerText = "Download started...";
+    statusMsg.style.display = "block";
+
+    // Start polling progress
+    const interval = setInterval(async () => {
+      const res = await fetch("/progress");
+      const data = await res.json();
+
+      if (data.status === "downloading") {
+        statusMsg.innerText = ` please wait while your video Downloads... ${data.percent}%`;
+      } else if (data.status === "finished") {
+        clearInterval(interval);
+        statusMsg.innerText = "Download finished!✅ ";
+      }
+    }, 1000);
+
+    // Now actually submit form (starts download)
+    form.submit();
+  });
+</script>
+</body>
+</html>
